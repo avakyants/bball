@@ -11,7 +11,7 @@ public class Hello {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String sayPlainTextHello() {
-		return "{\"hello\":\"world\"}";
+		return "{\"id\":1,\"visitor\":\"CLE\",\"home\":\"GSW\"}";
 	}
 	
 }
