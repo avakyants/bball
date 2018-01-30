@@ -22,13 +22,29 @@
 		    <artifactId>jersey-hk2</artifactId>
 		    <version>2.26</version>
 		</dependency>
+		<!-- обязательно для связки jersey и jackson - автоматического преобразования json в объекты -->
+		<dependency>
+		    <groupId>org.glassfish.jersey.media</groupId>
+		    <artifactId>jersey-media-json-jackson</artifactId>
+		    <version>2.26</version>
+		</dependency>
+		
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.3</version>
+		    <version>2.9.4</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<!-- обязательно для связки jersey и jackson - автоматического преобразования json в объекты -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.9.4</version>
+		</dependency>
+
 		
-		<!-- FIX JAVA 9 -->
+		
+		<!-- FIX JAVA 9 - отсутствую по умолчанию -->
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>

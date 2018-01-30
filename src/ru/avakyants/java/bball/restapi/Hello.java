@@ -38,7 +38,7 @@ public class Hello {
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addData(Game game) {		
-		String result = "Game added: "+game;
+		String result = "Game added: "+game.getId();
 		return Response.status(201).entity(result).build();
 	}
 	
