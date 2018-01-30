@@ -1,5 +1,7 @@
 package ru.avakyants.java.bball.restapi;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -14,11 +16,42 @@ import ru.avakyants.java.bball.model.Game;
 @Path("/hello")
 public class Hello {
 
+	
+	/*
+	 * преобразует ответ из объекта в json
+	 * */
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Game> sayPlainTextHello() {
+		
+		Game g1 = new Game();
+		g1.setId(1);
+		g1.setHome("GSW");
+		g1.setVisitor("CLE");
+		
+		Game g2 = new Game();
+		g2.setId(2);
+		g2.setHome("GSW");
+		g2.setVisitor("BOS");
+		
+		Game g3 = new Game();
+		g3.setId(3);
+		g3.setHome("LAL");
+		g3.setVisitor("NO");		
+		
+		List<Game> games = List.of(g1,g2,g3);
+		
+		return games;
+	}
+	
+	/*
+	 *  Возвращает в виде String без преобразований
+	 * 
+	 * @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String sayPlainTextHello() {
 		return "{\"id\":1,\"visitor\":\"CLE\",\"home\":\"GSW\"}";
-	}
+	}*/
 	
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
