@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import ru.avakyants.java.bball.data.NBAGamesByDateData;
 import ru.avakyants.java.bball.model.Game;
 import ru.avakyants.java.bball.model.test.SampleData;
 
@@ -105,6 +106,15 @@ public class Hello {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response testDataObj(SampleData data) {
 		String result = "OK: "+data.getSportsContent().getGames().get(1).getId();
+		return Response.status(201).entity(result).build();
+	}
+	
+	@POST
+	@Path("/testnba")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response testNBAGameList(NBAGamesByDateData data) {
+		
+		String result = "OK: "+data.getSportsContent().getGames().getGames().get(0).getHome().getKey();
 		return Response.status(201).entity(result).build();
 	}
 	
