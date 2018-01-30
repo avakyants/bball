@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import ru.avakyants.java.bball.model.Game;
+import ru.avakyants.java.bball.model.test.SampleData;
 
 @Path("/hello")
 public class Hello {
@@ -75,5 +76,36 @@ public class Hello {
 		return Response.status(201).entity(result).build();
 	}
 	
+	/*тестируем генерацию json на основе сложного объекта, в объектными полями 
+	 * на основе тестовой модели ru.avakyants.java.bball.model.test.SampleData
+	 * 
+	 * {
+			"sportsContent":{
+				"meta":{
+					"dateTime":"20180130 1116",
+					"seasonMeta":{
+						"prop1":"value1",
+						"prop2":"value2",
+						"prop3":"value3"
+					},
+					"test":"1212" -- ignored!!!!
+				},
+				"games":[
+					{"id":1,"home":"GSW","visitor":"BOS"},
+					{"id":1,"home":"LAL","visitor":"BOS"},
+					{"id":1,"home":"POR","visitor":"MIN"},
+					{"id":1,"home":"HOU","visitor":"CHI"}
+				]
+			}
+		}
+	 * 
+	 * */
+	@POST
+	@Path("/testobj")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response testDataObj(SampleData data) {
+		String result = "OK: "+data.getSportsContent().getGames().get(1).getId();
+		return Response.status(201).entity(result).build();
+	}
 	
 }
