@@ -13,5 +13,5 @@ public enum Periods {
 	public int getValue() {
 		return this.value;
 	}
-
+	
 }

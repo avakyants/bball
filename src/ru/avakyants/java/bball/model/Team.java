@@ -7,5 +7,36 @@ public class Team {
 	private City city;
 	private String name;
 	private String key;
-	private List<GameTeam> gameTeamList;	
+	private List<GameTeam> gameTeamList;
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	public List<GameTeam> getGameTeamList() {
+		return gameTeamList;
+	}
+	public void setGameTeamList(List<GameTeam> gameTeamList) {
+		this.gameTeamList = gameTeamList;
+	}	
 }
