@@ -1,31 +1,14 @@
 package ru.avakyants.java.bball.model;
 
+import java.time.ZonedDateTime;
+
 public class Game {
-	private int id;
-	private String visitor;
-	private String home;
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public int getId() {
-		return this.id;
-	}
-	
-	public void setVisitor(String v) {
-		this.visitor = v;
-	}
-	
-	public String getVisitor() {
-		return visitor;
-	}
-	
-	public void setHome(String h) {
-		this.home = h;
-	}
-	
-	public String getHome() {
-		return home;
-	}
+	private long id;
+	private long sourceId;
+	private ZonedDateTime dateTime;
+	private SeasonStage seasonStage;
+	private Arena arena;
+	private int periodCnt;
+	private GameTeam visitor;
+	private GameTeam home;
 }
