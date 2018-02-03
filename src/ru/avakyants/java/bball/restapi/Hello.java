@@ -1,5 +1,8 @@
 package ru.avakyants.java.bball.restapi;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import ru.avakyants.java.bball.data.NBAGamesByDateData;
-import ru.avakyants.java.bball.model.Game;
+import ru.avakyants.java.bball.model.*;
 import ru.avakyants.java.bball.model.test.SampleData;
 
 @Path("/hello")
@@ -26,22 +29,78 @@ public class Hello {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Game> sayPlainTextHello() {
 		
+		Country country = new Country();
+		country.setId(7L);
+		country.setName("Russia");
+		
+		CountryState state = new CountryState();
+		state.setId(1L);
+		state.setName("Moscow");
+		state.setCountry(country);
+		country.getCountryStateList().add(state);
+		
+		City city  =new City();
+		city.setId(1L);
+		city.setName("Moscow");
+		city.setCountryState(state);
+		state.getCityList().add(city);
+		
+		Arena arena = new Arena();
+		arena.setId(1L);
+		arena.setName("USC CSKA");
+		arena.setCity(city);
+		city.getArenaList().add(arena);
+		
+		League league = new League();
+		league.setId(1L);
+		league.setName("Euroleague");
+		
+		Season season = new Season();
+		season.setId(1L);
+		season.setLeague(league);
+		
+		SeasonStage stage = new SeasonStage();
+		stage.setId(1L);
+		stage.setName("Regular Season");
+		stage.setSeason(season);
+		stage.setStartDate(LocalDate.of(2017, 9, 1));
+		stage.setEndDate(LocalDate.of(2018, 5, 31));
+		season.getStageList().add(stage);
+		
+		Team teamHome = new Team();
+		teamHome.setId(1L);
+		teamHome.setKey("CSKA");
+		teamHome.setName("Central Sport Club of Army");
+		teamHome.setCity(city);
+		
+		Team teamVisitor = new Team();
+		teamVisitor.setId(2L);
+		teamVisitor.setKey("RMD");
+		teamVisitor.setName("BC Real Madrid");
+		teamVisitor.setCity(null);//lazy create Real Madrid city
+		
+		GameTeam home = new GameTeam();
+		home.setId(1L);
+		home.setTeam(teamHome);
+		home.setScore((short)87);
+		teamHome.getGameTeamList().add(home);
+		
+		GameTeam visitor = new GameTeam();
+		visitor.setId(2L);
+		visitor.setTeam(teamVisitor);
+		visitor.setScore((short)81);
+		teamVisitor.getGameTeamList().add(visitor);
+		
 		Game g1 = new Game();
-		g1.setId(1);
-		g1.setHome("GSW");
-		g1.setVisitor("CLE");
+		g1.setId(1L);
+		g1.setArena(arena);
+		g1.setDateTime(ZonedDateTime.of(2018, 2, 2, 19, 0, 0, 0, ZoneId.of("Europe/Moscow")));
+		g1.setSourceId(12345678901L);
+		g1.setSeasonStage(stage);
+		g1.setHome(home);
+		g1.setVisitor(visitor);
 		
-		Game g2 = new Game();
-		g2.setId(2);
-		g2.setHome("GSW");
-		g2.setVisitor("BOS");
-		
-		Game g3 = new Game();
-		g3.setId(3);
-		g3.setHome("LAL");
-		g3.setVisitor("NO");		
-		
-		List<Game> games = List.of(g1,g2,g3);
+		List<Game> games = List.of(g1);
 		
 		return games;
 	}

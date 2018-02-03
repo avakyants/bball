@@ -1,5 +1,6 @@
 package ru.avakyants.java.bball.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
@@ -7,7 +8,7 @@ public class Team {
 	private City city;
 	private String name;
 	private String key;
-	private List<GameTeam> gameTeamList;
+	private List<GameTeam> gameTeamList = new ArrayList<>();
 	
 	public long getId() {
 		return id;

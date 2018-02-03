@@ -2,13 +2,22 @@ package ru.avakyants.java.bball.model;
 
 import java.time.ZonedDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Game {
 	private long id;
 	private long sourceId;
+	
+	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
 	private ZonedDateTime dateTime;
+	@JsonIgnore
 	private SeasonStage seasonStage;
+	@JsonIgnore
 	private Arena arena;
+	@JsonIgnore
 	private GameTeam visitor;
+	@JsonIgnore
 	private GameTeam home;
 	
 	public long getId() {

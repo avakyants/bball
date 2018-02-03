@@ -1,10 +1,13 @@
 package ru.avakyants.java.bball.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameTeam {
 	private long id;
 	private Team team;
 	private short score;
-	private Linescores linescores;
+	private List<Period> linescores = new ArrayList<>();
 	private Game game;
 	
 	public long getId() {
@@ -25,10 +28,10 @@ public class GameTeam {
 	public void setScore(short score) {
 		this.score = score;
 	}
-	public Linescores getLinescores() {
+	public List<Period> getLinescores() {
 		return linescores;
 	}
-	public void setLinescores(Linescores linescores) {
+	public void setLinescores(List<Period> linescores) {
 		this.linescores = linescores;
 	}
 	public Game getGame() {
