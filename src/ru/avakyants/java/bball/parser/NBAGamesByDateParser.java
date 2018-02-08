@@ -5,9 +5,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-import ru.avakyants.java.bball.data.NBAGamesByDateData;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.avakyants.java.bball.data.in.NBAGamesByDateData;
 
 public class NBAGamesByDateParser {
 

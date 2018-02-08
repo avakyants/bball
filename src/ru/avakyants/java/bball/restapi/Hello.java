@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import ru.avakyants.java.bball.data.NBAGamesByDateData;
+import ru.avakyants.java.bball.data.in.NBAGamesByDateData;
 import ru.avakyants.java.bball.model.*;
 import ru.avakyants.java.bball.model.test.SampleData;
 

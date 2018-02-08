@@ -1,4 +1,4 @@
-package ru.avakyants.java.bball.data;
+package ru.avakyants.java.bball.data.in;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ru.avakyants.java.bball.data.nba.NBASportsContent;

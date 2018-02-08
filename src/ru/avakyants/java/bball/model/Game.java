@@ -1,18 +1,26 @@
 package ru.avakyants.java.bball.model;
 
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Game {
 	private long id;
 	private long sourceId;
 	
-	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
+	@JsonIgnore
 	private ZonedDateTime dateTime;
+	
+	//String representation on ZonedDateTime
+	private String dateTimeString;
+	
 	@JsonIgnore
 	private SeasonStage seasonStage;
+	
+	private long seasonStageId;
+	
 	@JsonIgnore
 	private Arena arena;
 	@JsonIgnore
@@ -37,13 +45,23 @@ public class Game {
 	}
 	public void setDateTime(ZonedDateTime dateTime) {
 		this.dateTime = dateTime;
+		this.dateTimeString = DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(dateTime);
 	}
 	public SeasonStage getSeasonStage() {
 		return seasonStage;
 	}
 	public void setSeasonStage(SeasonStage seasonStage) {
 		this.seasonStage = seasonStage;
+		this.seasonStageId = (seasonStage!=null)?seasonStage.getId():0;
 	}
+	
+	public long getSeasonStageId() {
+		return seasonStageId;
+	}
+	public void setSeasonStageId(long seasonStageId) {
+		this.seasonStageId = seasonStageId;
+	}
+	
 	public Arena getArena() {
 		return arena;
 	}
@@ -62,4 +80,15 @@ public class Game {
 	public void setHome(GameTeam home) {
 		this.home = home;
 	}
+	
+	@JsonProperty("datetime")
+	public String getDateTimeString() {
+		return dateTimeString;
+	}
+	@JsonProperty("datetime")
+	public void setDateTimeString(String dateTimeString) {
+		this.dateTime = ZonedDateTime.parse(dateTimeString, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+		this.dateTimeString = dateTimeString;		
+	}
+
 }
