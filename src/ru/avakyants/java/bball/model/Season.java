@@ -3,12 +3,14 @@ package ru.avakyants.java.bball.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class Season {
 	
 	private long id;
-	private League league;
-	private List<SeasonStage> stageList = new ArrayList<>();
-	private List<Game> gameList = new ArrayList<>();
+	@JsonManagedReference private League league;
+	@JsonBackReference private List<SeasonStage> stageList = new ArrayList<>();
 	
 	public long getId() {
 		return id;
@@ -28,11 +30,5 @@ public class Season {
 	public void setStageList(List<SeasonStage> stageList) {
 		this.stageList = stageList;
 	}
-	public List<Game> getGameList() {
-		gameList = new ArrayList<>();
-		for(SeasonStage stage : stageList) {
-			gameList.addAll(stage.getGameList());
-		}
-		return gameList;
-	}
+	
 }

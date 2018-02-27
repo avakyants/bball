@@ -4,6 +4,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Game {
@@ -16,13 +17,11 @@ public class Game {
 	//String representation on ZonedDateTime
 	private String dateTimeString;
 	
-	@JsonIgnore
+	@JsonManagedReference
 	private SeasonStage seasonStage;
 	
-	private long seasonStageId;
-	
-	@JsonIgnore
 	private Arena arena;
+	
 	@JsonIgnore
 	private GameTeam visitor;
 	@JsonIgnore
@@ -52,14 +51,6 @@ public class Game {
 	}
 	public void setSeasonStage(SeasonStage seasonStage) {
 		this.seasonStage = seasonStage;
-		this.seasonStageId = (seasonStage!=null)?seasonStage.getId():0;
-	}
-	
-	public long getSeasonStageId() {
-		return seasonStageId;
-	}
-	public void setSeasonStageId(long seasonStageId) {
-		this.seasonStageId = seasonStageId;
 	}
 	
 	public Arena getArena() {

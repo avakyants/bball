@@ -3,12 +3,15 @@ package ru.avakyants.java.bball.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class City {
 
 	private long id;
 	private String name;
-	private CountryState countryState;
-	private List<Arena> arenaList = new ArrayList<>();
+	@JsonManagedReference private CountryState countryState;
+	@JsonBackReference private List<Arena> arenaList = new ArrayList<>();
 	
 	public long getId() {
 		return id;

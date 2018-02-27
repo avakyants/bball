@@ -1,10 +1,12 @@
 package ru.avakyants.java.bball.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class Arena {
 	
 	private long id;
 	private String name;
-	private City city;
+	@JsonManagedReference private City city;
 	
 	public long getId() {
 		return id;

@@ -1,16 +1,32 @@
 package ru.avakyants.java.bball.model;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SeasonStage {
 	
 	private long id;
 	private String name;
+	
+	@JsonIgnore
 	private LocalDate startDate;
+	private String startDateString;
+	
+	@JsonIgnore
 	private LocalDate endDate;
-	private Season season;
+	private String endDateString;
+	
+	@JsonManagedReference private Season season;
+	
+	@JsonBackReference
 	private List<Game> gameList = new ArrayList<>();
 	
 	public long getId() {
@@ -23,14 +39,39 @@ public class SeasonStage {
 		return startDate;
 	}
 	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
+		this.startDateString = DateTimeFormatter.ISO_LOCAL_DATE.format(startDate);
+		this.startDate = startDate;		
 	}
+	
+	@JsonProperty("startdate")
+	public String getStartDateString() {
+		return this.startDateString;
+	}
+	@JsonProperty("startdate")
+	public void setStartDateString(String dateString) {
+		this.startDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
+		this.startDateString = dateString;		
+	}
+	
 	public LocalDate getEndDate() {
 		return endDate;
 	}
 	public void setEndDate(LocalDate endDate) {
+		this.endDateString = DateTimeFormatter.ISO_LOCAL_DATE.format(endDate);
 		this.endDate = endDate;
 	}
+	
+	@JsonProperty("enddate")
+	public String getEndDateString() {
+		return this.endDateString;
+	}
+	@JsonProperty("enddate")
+	public void setEndDateString(String dateString) {
+		this.endDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE);
+		this.endDateString = dateString;		
+	}
+	
+	
 	public Season getSeason() {
 		return season;
 	}
