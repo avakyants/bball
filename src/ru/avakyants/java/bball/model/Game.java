@@ -22,8 +22,7 @@ public class Game {
 	
 	private Arena arena;
 	
-	@JsonIgnore
-	private GameTeam visitor;
+	@JsonManagedReference private GameTeam visitor;
 	@JsonIgnore
 	private GameTeam home;
 	

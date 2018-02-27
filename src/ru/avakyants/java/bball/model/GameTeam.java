@@ -3,12 +3,15 @@ package ru.avakyants.java.bball.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class GameTeam {
 	private long id;
-	private Team team;
+	@JsonManagedReference private Team team;
 	private short score;
-	private List<Period> linescores = new ArrayList<>();
-	private Game game;
+	@JsonBackReference private List<Period> linescores = new ArrayList<>();
+	@JsonBackReference private Game game;
 	
 	public long getId() {
 		return id;

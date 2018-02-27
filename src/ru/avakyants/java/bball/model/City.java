@@ -12,6 +12,7 @@ public class City {
 	private String name;
 	@JsonManagedReference private CountryState countryState;
 	@JsonBackReference private List<Arena> arenaList = new ArrayList<>();
+	@JsonBackReference private List<Team> teamList = new ArrayList<>();
 	
 	public long getId() {
 		return id;
@@ -36,6 +37,12 @@ public class City {
 	}
 	public void setArenaList(List<Arena> arenaList) {
 		this.arenaList = arenaList;
+	}
+	public List<Team> getTeamList() {
+		return teamList;
+	}
+	public void setTeamList(List<Team> teamList) {
+		this.teamList = teamList;
 	}
 	
 }
