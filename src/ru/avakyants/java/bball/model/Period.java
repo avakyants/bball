@@ -1,12 +1,12 @@
 package ru.avakyants.java.bball.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class Period {
 	private long id;
 	private Periods period;
 	private short score;
-	@JsonManagedReference private GameTeam gameTeam;
+	@JsonBackReference private GameTeam gameTeam;
 	
 	public long getId() {
 		return id;

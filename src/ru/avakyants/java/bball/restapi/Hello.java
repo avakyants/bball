@@ -80,15 +80,44 @@ public class Hello {
 		teamVisitor.setCity(null);//lazy create Real Madrid city
 		
 		GameTeam home = new GameTeam();
+		
+		/*Linescore home*/
+		Period ph1 = new Period();
+		ph1.setId(1L);
+		ph1.setPeriod(Periods.Q1);
+		ph1.setScore((short)21);
+		ph1.setGameTeam(home);
+		
+		Period ph2 = new Period();
+		ph2.setId(2L);
+		ph2.setPeriod(Periods.Q2);
+		ph2.setScore((short)19);
+		ph1.setGameTeam(home);
+		
+		Period ph3 = new Period();
+		ph3.setId(3L);
+		ph3.setPeriod(Periods.Q3);
+		ph3.setScore((short)22);
+		ph1.setGameTeam(home);
+		
+		Period ph4 = new Period();
+		ph4.setId(4L);
+		ph4.setPeriod(Periods.Q4);
+		ph4.setScore((short)26);
+		ph1.setGameTeam(home);
+		/**/
+		
 		home.setId(1L);
 		home.setTeam(teamHome);
 		home.setScore((short)87);
+		home.setLinescores(List.of(ph1,ph2,ph3,ph4));
 		teamHome.getGameTeamList().add(home);
 		
 		GameTeam visitor = new GameTeam();
 		visitor.setId(2L);
 		visitor.setTeam(teamVisitor);
 		visitor.setScore((short)81);
+		visitor.setLinescores(List.of(ph1,ph2,ph3,ph4));
 		teamVisitor.getGameTeamList().add(visitor);
 		
 		Game g1 = new Game();

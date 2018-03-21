@@ -23,8 +23,7 @@ public class Game {
 	private Arena arena;
 	
 	@JsonManagedReference private GameTeam visitor;
-	@JsonIgnore
-	private GameTeam home;
+	@JsonManagedReference private GameTeam home;
 	
 	public long getId() {
 		return id;

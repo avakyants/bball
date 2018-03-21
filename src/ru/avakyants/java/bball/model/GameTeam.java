@@ -10,7 +10,7 @@ public class GameTeam {
 	private long id;
 	@JsonManagedReference private Team team;
 	private short score;
-	@JsonBackReference private List<Period> linescores = new ArrayList<>();
+	@JsonManagedReference private List<Period> linescores = new ArrayList<>();
 	@JsonBackReference private Game game;
 	
 	public long getId() {
