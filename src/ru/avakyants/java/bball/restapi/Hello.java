@@ -1,8 +1,11 @@
 package ru.avakyants.java.bball.restapi;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -94,13 +97,17 @@ public class Hello {
 		Game g1 = new Game();
 		g1.setId(1L);
 		g1.setArena(arena);
-		g1.setDateTime(ZonedDateTime.of(2018, 2, 2, 19, 0, 0, 0, ZoneId.of("Europe/Moscow")));
+		//g1.setDateTime(ZonedDateTime.of(2018, 2, 2, 19, 0, 0, 0, ZoneId.of("Europe/Moscow")));
+		
+		ZonedDateTime zdt = ZonedDateTime.of(2018, 2, 2, 19, 0, 0, 0, ZoneId.of("Europe/Moscow"));
+		g1.setDateTime(Date.from(zdt.toInstant()));
 		g1.setSourceId(12345678901L);
 		g1.setSeasonStage(stage);
 		g1.setHome(home);
 		g1.setVisitor(visitor);
 		
-		List<Game> games = List.of(g1);
+		List<Game> games = new  ArrayList<>();
+		games.add(g1);
 		
 		return games;
 	}
@@ -160,7 +167,7 @@ public class Hello {
 		}
 	 * 
 	 * */
-	@POST
+/*	@POST
 	@Path("/testobj")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response testDataObj(SampleData data) {
@@ -176,5 +183,5 @@ public class Hello {
 		String result = "OK: "+data.getSportsContent().getGames().getGames().get(0).getHome().getKey();
 		return Response.status(201).entity(result).build();
 	}
-	
+*/	
 }

@@ -1,6 +1,7 @@
 package ru.avakyants.java.bball.model;
 
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -9,8 +10,10 @@ public class Game {
 	private long id;
 	private long sourceId;
 	
-	@JsonFormat(shape = JsonFormat.Shape.NUMBER)
-	private ZonedDateTime dateTime;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+	private Date dateTime;
+    //private ZonedDateTime dateTime;
+	
 	@JsonIgnore
 	private SeasonStage seasonStage;
 	@JsonIgnore
@@ -32,10 +35,12 @@ public class Game {
 	public void setSourceId(long sourceId) {
 		this.sourceId = sourceId;
 	}
-	public ZonedDateTime getDateTime() {
+	
+	
+	public Date getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime(ZonedDateTime dateTime) {
+	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
 	}
 	public SeasonStage getSeasonStage() {

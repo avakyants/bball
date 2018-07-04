@@ -11,7 +11,7 @@ import ru.avakyants.java.bball.model.Game;
 public class Obj2JSON {
 
 	public static void main(String[] args) {
-		Game game = new Game();
+	/*	Game game = new Game();
 		game.setId(2);
 		game.setHome("LAL");
 		game.setVisitor("BOS");
@@ -49,7 +49,7 @@ public class Obj2JSON {
 		}
 		
 		System.out.println("Array of Objects as JSON: "+json);
-		
+		*/
 	}
 
 }
