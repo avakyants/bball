@@ -8,7 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ru.avakyants.java.bball.model.Game;
+import ru.avakyants.java.bball.model.GameDTO;
 
 public class JSON2Obj {
 
@@ -16,9 +16,9 @@ public class JSON2Obj {
 		ObjectMapper mapper = new ObjectMapper();
 		//String json = "{\"id\":1,\"visitor\":\"CLE\",\"home\":\"GSW\"}";
 		
-		Game game = null;
+		GameDTO game = null;
 		try {
-			game = mapper.readValue(new URL("http://localhost:8080/bballREST/api/hello"), Game.class);
+			game = mapper.readValue(new URL("http://localhost:8080/bballREST/api/hello"), GameDTO.class);
 			//FROM STRING
 			//game = mapper.readValue(json, Game.class);
 		} catch (IOException e) {
@@ -33,9 +33,9 @@ public class JSON2Obj {
 		
 		
 		//ARRAY FROM JSON
-		List<Game> list = new ArrayList<Game>();
+		List<GameDTO> list = new ArrayList<GameDTO>();
 		try {
-			list = mapper.readValue(new URL("http://localhost:8080/bballREST/api/hello/arr"), new TypeReference<List<Game>>(){});
+			list = mapper.readValue(new URL("http://localhost:8080/bballREST/api/hello/arr"), new TypeReference<List<GameDTO>>(){});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

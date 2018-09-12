@@ -30,83 +30,46 @@ public class Hello {
 	 * */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Game> sayPlainTextHello() {
+	public List<GameDTO> sayPlainTextHello() {
 		
-		Country country = new Country();
-		country.setId(7L);
-		country.setName("Russia");
-		
-		CountryState state = new CountryState();
-		state.setId(1L);
-		state.setName("Moscow");
-		state.setCountry(country);
-		country.getCountryStateList().add(state);
-		
-		City city  =new City();
-		city.setId(1L);
-		city.setName("Moscow");
-		city.setCountryState(state);
-		state.getCityList().add(city);
-		
-		Arena arena = new Arena();
-		arena.setId(1L);
-		arena.setName("USC CSKA");
-		arena.setCity(city);
-		city.getArenaList().add(arena);
-		
-		League league = new League();
+		LeagueDTO league = new LeagueDTO();
 		league.setId(1L);
 		league.setName("Euroleague");
 		
-		Season season = new Season();
-		season.setId(1L);
-		season.setLeague(league);
-		
-		SeasonStage stage = new SeasonStage();
-		stage.setId(1L);
-		stage.setName("Regular Season");
-		stage.setSeason(season);
-		stage.setStartDate(LocalDate.of(2017, 9, 1));
-		stage.setEndDate(LocalDate.of(2018, 5, 31));
-		season.getStageList().add(stage);
-		
-		Team teamHome = new Team();
+		TeamDTO teamHome = new TeamDTO();
 		teamHome.setId(1L);
 		teamHome.setKey("CSKA");
 		teamHome.setName("Central Sport Club of Army");
-		teamHome.setCity(city);
 		
-		Team teamVisitor = new Team();
+		TeamDTO teamVisitor = new TeamDTO();
 		teamVisitor.setId(2L);
 		teamVisitor.setKey("RMD");
 		teamVisitor.setName("BC Real Madrid");
-		teamVisitor.setCity(null);//lazy create Real Madrid city
 		
-		GameTeam home = new GameTeam();
+		GameTeamDTO home = new GameTeamDTO();
 		home.setId(1L);
 		home.setTeam(teamHome);
 		home.setScore((short)87);
 		teamHome.getGameTeamList().add(home);
 		
-		GameTeam visitor = new GameTeam();
+		GameTeamDTO visitor = new GameTeamDTO();
 		visitor.setId(2L);
 		visitor.setTeam(teamVisitor);
 		visitor.setScore((short)81);
 		teamVisitor.getGameTeamList().add(visitor);
 		
-		Game g1 = new Game();
+		GameDTO g1 = new GameDTO();
 		g1.setId(1L);
-		g1.setArena(arena);
 		//g1.setDateTime(ZonedDateTime.of(2018, 2, 2, 19, 0, 0, 0, ZoneId.of("Europe/Moscow")));
 		
 		ZonedDateTime zdt = ZonedDateTime.of(2018, 2, 2, 19, 0, 0, 0, ZoneId.of("Europe/Moscow"));
 		g1.setDateTime(Date.from(zdt.toInstant()));
 		g1.setSourceId(12345678901L);
-		g1.setSeasonStage(stage);
 		g1.setHome(home);
 		g1.setVisitor(visitor);
+		g1.setLeague(league);
 		
-		List<Game> games = new  ArrayList<>();
+		List<GameDTO> games = new  ArrayList<>();
 		games.add(g1);
 		
 		return games;
@@ -138,7 +101,7 @@ public class Hello {
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addData(Game game) {		
+	public Response addData(GameDTO game) {		
 		String result = "Game added: "+game.getId();
 		return Response.status(201).entity(result).build();
 	}
