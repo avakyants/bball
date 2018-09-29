@@ -1,4 +1,4 @@
-package ru.avakyants.java.bball.model;
+package ru.avakyants.java.bball.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;

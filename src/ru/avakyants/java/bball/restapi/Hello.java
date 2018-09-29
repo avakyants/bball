@@ -19,6 +19,10 @@ import javax.ws.rs.core.Response;
 
 import ru.avakyants.java.bball.data.NBAGamesByDateData;
 import ru.avakyants.java.bball.model.*;
+import ru.avakyants.java.bball.model.dto.GameDTO;
+import ru.avakyants.java.bball.model.dto.GameTeamDTO;
+import ru.avakyants.java.bball.model.dto.LeagueDTO;
+import ru.avakyants.java.bball.model.dto.TeamDTO;
 import ru.avakyants.java.bball.model.test.SampleData;
 
 @Path("/hello")

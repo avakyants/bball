@@ -8,7 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ru.avakyants.java.bball.model.GameDTO;
+import ru.avakyants.java.bball.model.dto.GameDTO;
 
 public class JSON2Obj {
 
